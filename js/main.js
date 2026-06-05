@@ -40,10 +40,33 @@
   /* Mobile nav toggle */
   const navToggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('header nav');
-  navToggle?.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open);
-  });
+  if (navToggle && nav) {
+    let backdrop = document.querySelector('.nav-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'nav-backdrop';
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(backdrop);
+    }
+
+    const setNavOpen = open => {
+      nav.classList.toggle('open', open);
+      backdrop.classList.toggle('show', open);
+      document.body.classList.toggle('nav-open', open);
+      navToggle.setAttribute('aria-expanded', open);
+      navToggle.textContent = open ? '✕' : '☰';
+    };
+
+    navToggle.addEventListener('click', () => setNavOpen(!nav.classList.contains('open')));
+    backdrop.addEventListener('click', () => setNavOpen(false));
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setNavOpen(false)));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') setNavOpen(false);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) setNavOpen(false);
+    });
+  }
 
   /* Category filter tabs (AI tools page) */
   document.querySelectorAll('.category-tabs').forEach(tabBar => {
