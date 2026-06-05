@@ -50,7 +50,7 @@ export function SearchExplorerClient({ entries }: SearchExplorerClientProps) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search guides, roadmaps, and tools with fuzzy matching..."
-            className="w-full rounded-xl border border-white/15 bg-black/35 py-3 pl-10 pr-3 text-sm outline-none transition focus:border-cyan-400"
+            className="w-full rounded-xl border border-border bg-black/35 py-3 pl-10 pr-3 text-sm outline-none transition focus:border-cyan-400"
           />
         </label>
       </div>
@@ -72,7 +72,7 @@ export function SearchExplorerClient({ entries }: SearchExplorerClientProps) {
                 </span>
               )}
             </div>
-            <h2 className="mt-3 font-display text-xl font-semibold text-white">
+            <h2 className="mt-3 font-display text-xl font-semibold text-text">
               {item.title}
             </h2>
             <p className="mt-2 text-sm text-muted">{item.excerpt}</p>
@@ -80,7 +80,7 @@ export function SearchExplorerClient({ entries }: SearchExplorerClientProps) {
               {item.tags.slice(0, 4).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[11px] text-muted"
+                  className="rounded-full border border-border bg-elevated px-2 py-1 text-[11px] text-muted"
                 >
                   {tag}
                 </span>

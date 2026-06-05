@@ -68,7 +68,7 @@ export default function CategoriesPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Categories
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Explore by topic and outcome
           </h1>
           <p className="mt-3 max-w-3xl text-sm text-muted sm:text-base">
@@ -87,7 +87,7 @@ export default function CategoriesPage() {
               <p className="text-xs uppercase tracking-widest text-cyan-300">
                 {category.count}
               </p>
-              <h2 className="mt-3 font-display text-2xl font-semibold text-white">
+              <h2 className="mt-3 font-display text-2xl font-semibold text-text">
                 {category.name}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted">

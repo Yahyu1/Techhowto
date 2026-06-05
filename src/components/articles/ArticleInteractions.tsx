@@ -83,14 +83,14 @@ export function ArticleInteractions({ slug, title }: ArticleInteractionsProps) {
 
   return (
     <section className="glass rounded-2xl p-5">
-      <h3 className="font-display text-lg font-semibold text-white">
+      <h3 className="font-display text-lg font-semibold text-text">
         Share and React
       </h3>
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"
           onClick={share}
-          className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-muted transition hover:border-white/20 hover:text-white"
+          className="rounded-xl border border-border bg-elevated px-3 py-2 text-sm text-muted transition hover:border-border hover:text-text"
         >
           <Share2 size={15} className="mr-2 inline-block" />
           Share
@@ -98,7 +98,7 @@ export function ArticleInteractions({ slug, title }: ArticleInteractionsProps) {
         <button
           type="button"
           onClick={copyLink}
-          className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-muted transition hover:border-white/20 hover:text-white"
+          className="rounded-xl border border-border bg-elevated px-3 py-2 text-sm text-muted transition hover:border-border hover:text-text"
         >
           <Copy size={15} className="mr-2 inline-block" />
           {copied ? "Copied" : "Copy Link"}
@@ -109,7 +109,7 @@ export function ArticleInteractions({ slug, title }: ArticleInteractionsProps) {
           className={`rounded-xl border px-3 py-2 text-sm transition ${
             bookmarked
               ? "border-cyan-400/50 bg-cyan-500/15 text-cyan-300"
-              : "border-white/10 bg-white/5 text-muted hover:border-white/20 hover:text-white"
+              : "border-border bg-elevated text-muted hover:border-border hover:text-text"
           }`}
         >
           <Bookmark size={15} className="mr-2 inline-block" />
@@ -124,7 +124,7 @@ export function ArticleInteractions({ slug, title }: ArticleInteractionsProps) {
         <button
           type="button"
           onClick={() => voteReaction("helpful")}
-          className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-muted transition hover:border-white/20 hover:text-white"
+          className="rounded-xl border border-border bg-elevated px-3 py-2 text-sm text-muted transition hover:border-border hover:text-text"
         >
           <ThumbsUp size={15} className="mr-2 inline-block" />
           Helpful ({reactions.helpful})
@@ -132,7 +132,7 @@ export function ArticleInteractions({ slug, title }: ArticleInteractionsProps) {
         <button
           type="button"
           onClick={() => voteReaction("amazing")}
-          className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-muted transition hover:border-white/20 hover:text-white"
+          className="rounded-xl border border-border bg-elevated px-3 py-2 text-sm text-muted transition hover:border-border hover:text-text"
         >
           <Sparkles size={15} className="mr-2 inline-block" />
           Amazing ({reactions.amazing})
@@ -140,7 +140,7 @@ export function ArticleInteractions({ slug, title }: ArticleInteractionsProps) {
         <button
           type="button"
           onClick={() => voteReaction("learned")}
-          className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-muted transition hover:border-white/20 hover:text-white"
+          className="rounded-xl border border-border bg-elevated px-3 py-2 text-sm text-muted transition hover:border-border hover:text-text"
         >
           <Brain size={15} className="mr-2 inline-block" />
           Learned Something ({reactions.learned})

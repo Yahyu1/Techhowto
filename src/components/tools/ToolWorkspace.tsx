@@ -18,7 +18,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const codeAreaClasses =
-  "w-full min-h-[240px] rounded-lg border border-white/15 bg-black/35 p-3 text-sm text-white font-mono outline-none focus:border-cyan-400";
+  "w-full min-h-[240px] rounded-lg border border-border bg-black/35 p-3 text-sm text-text font-mono outline-none focus:border-cyan-400";
 
 function formatHexToRgb(hex: string): string | null {
   const cleaned = hex.replace("#", "");
@@ -193,13 +193,13 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
               value={regexPattern}
               onChange={(event) => setRegexPattern(event.target.value)}
               placeholder="Regex pattern"
-              className="w-full rounded-lg border border-white/15 bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
             />
             <input
               value={regexFlags}
               onChange={(event) => setRegexFlags(event.target.value)}
               placeholder="Flags (e.g. gmi)"
-              className="w-full rounded-lg border border-white/15 bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
             />
             <textarea
               value={input}
@@ -246,7 +246,7 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
               value={timestampInput}
               onChange={(event) => setTimestampInput(event.target.value)}
               placeholder="Unix seconds, milliseconds, or date string"
-              className="w-full rounded-lg border border-white/15 bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
             />
             <Button
               type="button"
@@ -275,19 +275,19 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
               type="color"
               value={pickedColor}
               onChange={(event) => setPickedColor(event.target.value)}
-              className="h-12 w-full cursor-pointer rounded-lg border border-white/15 bg-black/35"
+              className="h-12 w-full cursor-pointer rounded-lg border border-border bg-black/35"
             />
             <input
               value={pickedColor}
               onChange={(event) => setPickedColor(event.target.value)}
-              className="w-full rounded-lg border border-white/15 bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
             />
           </div>
         }
         output={
           <div className="space-y-3">
             <div
-              className="h-24 rounded-lg border border-white/15"
+              className="h-24 rounded-lg border border-border"
               style={{ backgroundColor: pickedColor }}
             />
             <pre className={codeAreaClasses}>{`${pickedColor}\n${rgb}`}</pre>
@@ -312,13 +312,13 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
                 type="color"
                 value={gradientStart}
                 onChange={(event) => setGradientStart(event.target.value)}
-                className="h-12 rounded-lg border border-white/15 bg-black/35"
+                className="h-12 rounded-lg border border-border bg-black/35"
               />
               <input
                 type="color"
                 value={gradientEnd}
                 onChange={(event) => setGradientEnd(event.target.value)}
-                className="h-12 rounded-lg border border-white/15 bg-black/35"
+                className="h-12 rounded-lg border border-border bg-black/35"
               />
             </div>
             <label className="block text-sm text-muted">
@@ -337,7 +337,7 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
         output={
           <div className="space-y-3">
             <div
-              className="h-24 rounded-lg border border-white/15"
+              className="h-24 rounded-lg border border-border"
               style={{ background: gradient }}
             />
             <pre className={codeAreaClasses}>{css}</pre>
@@ -415,7 +415,7 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
                     Math.max(1, Math.min(20, Number(event.target.value) || 1))
                   )
                 }
-                className="mt-2 w-full rounded-lg border border-white/15 bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+                className="mt-2 w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
               />
             </label>
           </div>
@@ -441,7 +441,7 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
                   setMetaValues((prev) => ({ ...prev, [key]: event.target.value }))
                 }
                 placeholder={key}
-                className="w-full rounded-lg border border-white/15 bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+                className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
               />
             ))}
           </div>
@@ -478,7 +478,7 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
         <div className="space-y-3">
           {tool.slug === "markdown-previewer" ? (
             <article
-              className="prose prose-invert max-w-none rounded-lg border border-white/10 bg-black/20 p-3"
+              className="prose prose-invert max-w-none rounded-lg border border-border bg-black/20 p-3"
               dangerouslySetInnerHTML={{ __html: output }}
             />
           ) : (

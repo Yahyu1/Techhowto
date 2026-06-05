@@ -11,8 +11,8 @@ const variants = {
   primary:
     "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:brightness-110",
   secondary:
-    "glass glass-hover text-white",
-  ghost: "text-muted hover:text-white hover:bg-white/5",
+    "glass glass-hover text-text",
+  ghost: "text-muted hover:text-text hover:bg-elevated",
 };
 
 const sizes = {

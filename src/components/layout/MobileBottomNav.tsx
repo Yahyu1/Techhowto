@@ -18,7 +18,7 @@ export function MobileBottomNav() {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-50 glass border-t border-white/10 lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 glass border-t border-border lg:hidden"
       aria-label="Mobile bottom navigation"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
@@ -34,7 +34,7 @@ export function MobileBottomNav() {
               href={href}
               className={cn(
                 "flex min-h-[48px] min-w-[56px] flex-col items-center justify-center gap-0.5 rounded-xl px-2 text-[10px] font-medium transition-colors",
-                active ? "text-cyan-400" : "text-muted hover:text-white"
+                active ? "text-cyan-400" : "text-muted hover:text-text"
               )}
             >
               <Icon size={20} strokeWidth={active ? 2.5 : 2} />

@@ -24,7 +24,7 @@ export default function NewsletterPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan-300">
             Newsletter
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Your unfair edge in tech, every Tuesday
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
@@ -39,7 +39,7 @@ export default function NewsletterPage() {
           {features.map((feature) => (
             <div
               key={feature}
-              className="glass rounded-xl border border-white/10 p-4 text-sm text-muted"
+              className="glass rounded-xl border border-border p-4 text-sm text-muted"
             >
               {feature}
             </div>

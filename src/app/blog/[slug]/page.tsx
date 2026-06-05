@@ -81,7 +81,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             Blog
           </Link>
           <ChevronRight size={14} />
-          <span className="text-white">{article.title}</span>
+          <span className="text-text">{article.title}</span>
         </nav>
 
         <ArticlePageClient article={article} related={related} />

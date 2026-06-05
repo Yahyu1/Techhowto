@@ -51,7 +51,7 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-white/8">
+    <footer className="relative mt-24 border-t border-border">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-6">
           <div className="lg:col-span-2">
@@ -64,7 +64,7 @@ export function Footer() {
                 <a
                   key={s}
                   href="#"
-                  className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-xl text-xs font-medium text-muted hover:text-white"
+                  className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-xl text-xs font-medium text-muted hover:text-text"
                   aria-label={s}
                 >
                   {s[0]}
@@ -74,7 +74,7 @@ export function Footer() {
           </div>
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
+              <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-text">
                 {col.title}
               </h4>
               <ul className="mt-4 space-y-2.5">
@@ -92,7 +92,7 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/8 pt-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-sm text-muted">
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>

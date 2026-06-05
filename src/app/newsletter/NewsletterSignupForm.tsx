@@ -75,7 +75,7 @@ export function NewsletterSignupForm() {
           </p>
         </div>
 
-        <h2 className="font-display text-h3 font-semibold text-white">
+        <h2 className="font-display text-h3 font-semibold text-text">
           Join 32,000+ builders shipping smarter every week
         </h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
@@ -97,7 +97,7 @@ export function NewsletterSignupForm() {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 placeholder="Alex Carter"
-                className="w-full rounded-xl border border-white/15 bg-black/35 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-400"
+                className="w-full rounded-xl border border-border bg-black/35 px-4 py-3 text-sm text-text outline-none transition focus:border-cyan-400"
               />
             </label>
 
@@ -113,7 +113,7 @@ export function NewsletterSignupForm() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="you@company.com"
-                className="w-full rounded-xl border border-white/15 bg-black/35 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-400"
+                className="w-full rounded-xl border border-border bg-black/35 px-4 py-3 text-sm text-text outline-none transition focus:border-cyan-400"
               />
             </label>
           </div>
@@ -153,7 +153,7 @@ export function NewsletterSignupForm() {
                   ? "border-emerald-400/30 bg-emerald-500/10 text-emerald-200"
                   : status === "error"
                     ? "border-rose-400/30 bg-rose-500/10 text-rose-200"
-                    : "border-white/20 bg-white/5 text-muted"
+                    : "border-border bg-elevated text-muted"
               }`}
             >
               <div className="flex items-start gap-2">
@@ -180,7 +180,7 @@ export function NewsletterSignupForm() {
           {providers.map((item) => (
             <span
               key={item}
-              className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1"
+              className="rounded-full border border-border bg-elevated px-2.5 py-1"
             >
               {item}
             </span>

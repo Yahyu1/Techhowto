@@ -202,7 +202,7 @@ export default function ResourcesPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Resources
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Curated stack for building and scaling online
           </h1>
           <p className="mt-3 max-w-3xl text-sm text-muted sm:text-base">
@@ -214,7 +214,7 @@ export default function ResourcesPage() {
         <div className="space-y-7">
           {sections.map((section) => (
             <section key={section.title} className="glass glow-border rounded-2xl p-6">
-              <h2 className="font-display text-h3 font-semibold text-white">
+              <h2 className="font-display text-h3 font-semibold text-text">
                 {section.title}
               </h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -224,10 +224,10 @@ export default function ResourcesPage() {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="glass-hover rounded-xl border border-white/10 p-4 transition-all hover:-translate-y-0.5"
+                    className="glass-hover rounded-xl border border-border p-4 transition-all hover:-translate-y-0.5"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <h3 className="font-semibold text-white">{item.name}</h3>
+                      <h3 className="font-semibold text-text">{item.name}</h3>
                       <span className="rounded-full bg-cyan-500/15 px-2.5 py-1 text-xs font-semibold text-cyan-200">
                         {item.price}
                       </span>

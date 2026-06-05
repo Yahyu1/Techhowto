@@ -24,7 +24,7 @@ export function ArticleCard({ article, rank }: ArticleCardProps) {
           </span>
         )}
       </div>
-      <h3 className="mt-4 font-display text-h3 font-semibold text-white group-hover:text-cyan-300 transition-colors">
+      <h3 className="mt-4 font-display text-h3 font-semibold text-text group-hover:text-cyan-300 transition-colors">
         {article.title}
       </h3>
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted line-clamp-2">

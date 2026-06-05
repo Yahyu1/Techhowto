@@ -43,7 +43,7 @@ export default function ContactPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Contact
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Let us connect
           </h1>
           <p className="mt-3 max-w-3xl text-sm text-muted sm:text-base">
@@ -56,7 +56,7 @@ export default function ContactPage() {
           {contactCards.map((card) => (
             <article key={card.title} className="glass glow-border rounded-2xl p-6">
               <card.icon size={18} className="text-cyan-300" />
-              <h2 className="mt-4 font-display text-xl font-semibold text-white">
+              <h2 className="mt-4 font-display text-xl font-semibold text-text">
                 {card.title}
               </h2>
               <p className="mt-2 text-sm text-muted">{card.detail}</p>

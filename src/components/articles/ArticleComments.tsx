@@ -52,14 +52,14 @@ export function ArticleComments({ slug }: ArticleCommentsProps) {
 
   return (
     <section className="glass rounded-2xl p-5">
-      <h3 className="font-display text-lg font-semibold text-white">Comments</h3>
+      <h3 className="font-display text-lg font-semibold text-text">Comments</h3>
       <form className="mt-4 space-y-3" onSubmit={onSubmit}>
         <input
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
           placeholder="Your name"
-          className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-muted outline-none transition focus:border-cyan-400/50"
+          className="w-full rounded-xl border border-border bg-elevated px-4 py-2.5 text-sm text-text placeholder:text-muted outline-none transition focus:border-cyan-400/50"
           required
         />
         <textarea
@@ -67,12 +67,12 @@ export function ArticleComments({ slug }: ArticleCommentsProps) {
           onChange={(event) => setMessage(event.target.value)}
           placeholder="Write your comment..."
           rows={4}
-          className="w-full resize-y rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-muted outline-none transition focus:border-cyan-400/50"
+          className="w-full resize-y rounded-xl border border-border bg-elevated px-4 py-2.5 text-sm text-text placeholder:text-muted outline-none transition focus:border-cyan-400/50"
           required
         />
         <button
           type="submit"
-          className="rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110"
+          className="rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-text transition hover:brightness-110"
         >
           Post Comment
         </button>
@@ -87,10 +87,10 @@ export function ArticleComments({ slug }: ArticleCommentsProps) {
           comments.map((comment) => (
             <article
               key={comment.id}
-              className="rounded-xl border border-white/10 bg-white/5 p-4"
+              className="rounded-xl border border-border bg-elevated p-4"
             >
               <div className="flex items-center justify-between gap-2">
-                <p className="font-semibold text-white">{comment.name}</p>
+                <p className="font-semibold text-text">{comment.name}</p>
                 <time className="text-xs text-muted">
                   {new Date(comment.createdAt).toLocaleDateString()}
                 </time>

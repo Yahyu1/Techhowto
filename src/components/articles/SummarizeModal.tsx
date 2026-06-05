@@ -69,12 +69,12 @@ export function SummarizeModal({ slug, title, content }: SummarizeModalProps) {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="absolute right-4 top-4 rounded-full border border-white/10 bg-white/5 p-2 text-muted transition hover:text-white"
+              className="absolute right-4 top-4 rounded-full border border-border bg-elevated p-2 text-muted transition hover:text-text"
               aria-label="Close summary modal"
             >
               <X size={16} />
             </button>
-            <h3 className="pr-10 font-display text-2xl font-semibold text-white">
+            <h3 className="pr-10 font-display text-2xl font-semibold text-text">
               AI Summary
             </h3>
             <p className="mt-2 text-sm text-muted">
@@ -86,7 +86,7 @@ export function SummarizeModal({ slug, title, content }: SummarizeModalProps) {
                 type="button"
                 onClick={summarize}
                 disabled={loading}
-                className="mt-6 inline-flex items-center rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60"
+                className="mt-6 inline-flex items-center rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-text transition hover:brightness-110 disabled:opacity-60"
               >
                 {loading ? (
                   <>
@@ -106,18 +106,18 @@ export function SummarizeModal({ slug, title, content }: SummarizeModalProps) {
             )}
 
             {result && (
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <div className="mt-6 rounded-2xl border border-border bg-elevated p-4">
                 <p className="text-xs uppercase tracking-wide text-cyan-300">
                   Provider: {result.provider}
                 </p>
-                <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-white/90">
+                <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-text/90">
                   {result.summary}
                 </p>
                 <button
                   type="button"
                   onClick={summarize}
                   disabled={loading}
-                  className="mt-4 rounded-lg border border-white/15 px-3 py-1.5 text-xs font-semibold text-muted transition hover:text-white disabled:opacity-60"
+                  className="mt-4 rounded-lg border border-border px-3 py-1.5 text-xs font-semibold text-muted transition hover:text-text disabled:opacity-60"
                 >
                   Regenerate
                 </button>

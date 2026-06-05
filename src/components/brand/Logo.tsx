@@ -42,7 +42,7 @@ export function Logo({ className, showText = true, size = "md" }: LogoProps) {
       {showText && (
         <span
           className={cn(
-            "font-display font-bold tracking-tight text-white",
+            "font-display font-bold tracking-tight text-text",
             s.text
           )}
         >

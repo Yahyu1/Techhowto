@@ -24,7 +24,7 @@ export default function AboutPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             About {SITE.name}
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Learn. Build. Launch.
           </h1>
           <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
@@ -35,18 +35,18 @@ export default function AboutPage() {
         </header>
 
         <div className="glass glow-border rounded-3xl p-7 sm:p-9">
-          <h2 className="font-display text-h3 font-semibold text-white">Our mission</h2>
+          <h2 className="font-display text-h3 font-semibold text-text">Our mission</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted">
             Modern tech moves quickly, and signal is hard to find. Our mission is to
             make high-quality technical knowledge easier to trust, easier to apply,
             and faster to turn into outcomes.
           </p>
-          <h3 className="mt-7 font-display text-xl font-semibold text-white">
+          <h3 className="mt-7 font-display text-xl font-semibold text-text">
             Editorial principles
           </h3>
           <ul className="mt-3 space-y-2 text-sm text-muted">
             {principles.map((item) => (
-              <li key={item} className="rounded-lg border border-white/10 bg-white/5 p-3">
+              <li key={item} className="rounded-lg border border-border bg-elevated p-3">
                 {item}
               </li>
             ))}

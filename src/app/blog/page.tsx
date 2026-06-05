@@ -22,7 +22,7 @@ export default function BlogPage() {
           <p className="text-sm font-semibold uppercase tracking-widest text-indigo-300">
             Editorial Hub
           </p>
-          <h1 className="mt-3 font-display text-h1 font-bold text-white">
+          <h1 className="mt-3 font-display text-h1 font-bold text-text">
             Insights for Modern Builders
           </h1>
           <p className="mx-auto mt-4 max-w-3xl text-muted">

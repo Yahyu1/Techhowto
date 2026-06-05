@@ -48,7 +48,7 @@ export default function PartnersPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Partner Program
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Grow your product with a high-intent builder audience
           </h1>
           <p className="mt-3 max-w-3xl text-sm text-muted sm:text-base">
@@ -60,7 +60,7 @@ export default function PartnersPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((item) => (
             <div key={item.label} className="glass rounded-xl p-4 text-center">
-              <p className="font-display text-2xl font-bold text-white">{item.value}</p>
+              <p className="font-display text-2xl font-bold text-text">{item.value}</p>
               <p className="mt-1 text-xs uppercase tracking-widest text-muted">
                 {item.label}
               </p>
@@ -71,7 +71,7 @@ export default function PartnersPage() {
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           {partnerTracks.map((track) => (
             <article key={track.title} className="glass glow-border rounded-2xl p-6">
-              <h2 className="font-display text-xl font-semibold text-white">
+              <h2 className="font-display text-xl font-semibold text-text">
                 {track.title}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -82,7 +82,7 @@ export default function PartnersPage() {
         </div>
 
         <div className="glass glow-border mt-8 rounded-3xl p-8 text-center">
-          <h2 className="font-display text-h3 font-semibold text-white">
+          <h2 className="font-display text-h3 font-semibold text-text">
             Let us build your next growth campaign
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted">

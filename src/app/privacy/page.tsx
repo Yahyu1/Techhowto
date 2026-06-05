@@ -17,7 +17,7 @@ export default function PrivacyPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Privacy Policy
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Your privacy matters
           </h1>
           <p className="mt-3 text-sm text-muted">
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
 
         <article className="glass glow-border space-y-6 rounded-3xl p-7 text-sm leading-relaxed text-muted sm:p-9">
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Information we collect
             </h2>
             <p className="mt-2">
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               How we use information
             </h2>
             <p className="mt-2">
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Third-party services
             </h2>
             <p className="mt-2">
@@ -61,7 +61,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Data retention
             </h2>
             <p className="mt-2">
@@ -72,7 +72,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Your rights
             </h2>
             <p className="mt-2">

@@ -52,7 +52,7 @@ export function RoadmapsDirectory({ roadmaps }: RoadmapsDirectoryProps) {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search roadmaps, skills, or tools..."
-                className="w-full rounded-2xl border border-white/10 bg-white/5 py-3 pl-11 pr-4 text-sm text-white placeholder:text-muted outline-none transition focus:border-cyan-400/50 focus:bg-white/8"
+                className="w-full rounded-2xl border border-border bg-elevated py-3 pl-11 pr-4 text-sm text-text placeholder:text-muted outline-none transition focus:border-cyan-400/50 focus:bg-elevated"
               />
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -64,7 +64,7 @@ export function RoadmapsDirectory({ roadmaps }: RoadmapsDirectoryProps) {
                   className={`rounded-xl border px-4 py-2 text-sm font-semibold transition ${
                     level === option
                       ? "border-cyan-400/60 bg-cyan-500/15 text-cyan-300"
-                      : "border-white/10 bg-white/5 text-muted hover:border-white/20 hover:text-white"
+                      : "border-border bg-elevated text-muted hover:border-border hover:text-text"
                   }`}
                 >
                   {option}
@@ -90,7 +90,7 @@ export function RoadmapsDirectory({ roadmaps }: RoadmapsDirectoryProps) {
                 </span>
                 <span className="text-xs text-muted">{roadmap.duration}</span>
               </div>
-              <h3 className="mt-4 font-display text-2xl font-semibold text-white transition-colors group-hover:text-cyan-300">
+              <h3 className="mt-4 font-display text-2xl font-semibold text-text transition-colors group-hover:text-cyan-300">
                 {roadmap.title}
               </h3>
               <p className="mt-3 line-clamp-3 text-sm text-muted">
@@ -100,13 +100,13 @@ export function RoadmapsDirectory({ roadmaps }: RoadmapsDirectoryProps) {
                 {roadmap.skills.slice(0, 3).map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-lg border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-muted"
+                    className="rounded-lg border border-border bg-elevated px-2.5 py-1 text-xs text-muted"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-              <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/10">
+              <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-elevated">
                 <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" />
               </div>
             </Link>

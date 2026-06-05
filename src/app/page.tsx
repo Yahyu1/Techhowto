@@ -49,7 +49,7 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <section className="border-y border-white/5 py-12">
+      <section className="border-y border-border py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="mb-8 text-center text-sm font-medium uppercase tracking-widest text-muted">
             Trusted by developers at
@@ -58,7 +58,7 @@ export default function HomePage() {
             {TRUSTED_BY.map((name) => (
               <span
                 key={name}
-                className="font-display text-lg font-semibold text-white/30"
+                className="font-display text-lg font-semibold text-muted/50"
               >
                 {name}
               </span>
@@ -82,7 +82,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white/[0.02]">
+      <section className="py-20 section-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title="🔥 Trending This Week"
@@ -113,7 +113,7 @@ export default function HomePage() {
               >
                 <span className="text-2xl">{tool.icon}</span>
                 <div>
-                  <div className="font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                  <div className="font-semibold text-text group-hover:text-cyan-300 transition-colors">
                     {tool.name}
                   </div>
                   <div className="text-xs text-muted">{tool.category}</div>
@@ -124,7 +124,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white/[0.02]">
+      <section className="py-20 section-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             title="Learning Roadmaps"
@@ -144,13 +144,13 @@ export default function HomePage() {
                   </span>
                   <span className="text-xs text-muted">{roadmap.duration}</span>
                 </div>
-                <h3 className="mt-4 font-display text-xl font-semibold text-white">
+                <h3 className="mt-4 font-display text-xl font-semibold text-text">
                   {roadmap.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted line-clamp-2">
                   {roadmap.description}
                 </p>
-                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/10">
+                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-elevated">
                   <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400" />
                 </div>
               </Link>
@@ -161,7 +161,7 @@ export default function HomePage() {
 
       <section className="py-20">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 className="font-display text-h2 font-bold text-white">
+          <h2 className="font-display text-h2 font-bold text-text">
             Stay ahead of the curve
           </h2>
           <p className="mt-4 text-muted">
@@ -174,7 +174,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white/[0.02]">
+      <section className="py-20 section-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader title="What developers say" />
           <div className="grid gap-6 md:grid-cols-3">
@@ -184,11 +184,11 @@ export default function HomePage() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="mt-6 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 text-sm font-bold text-white">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 text-sm font-bold text-text">
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold text-white">{t.name}</div>
+                    <div className="font-semibold text-text">{t.name}</div>
                     <div className="text-xs text-muted">
                       {t.role} · {t.company}
                     </div>
@@ -215,7 +215,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <div className="glass glow-border aurora relative overflow-hidden rounded-3xl p-10 text-center sm:p-14">
             <Wrench className="mx-auto mb-6 text-cyan-400" size={40} />
-            <h2 className="font-display text-h2 font-bold text-white">
+            <h2 className="font-display text-h2 font-bold text-text">
               Ready to level up?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-muted">

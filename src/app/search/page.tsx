@@ -47,7 +47,7 @@ export default function SearchPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Search
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Find what you need in seconds
           </h1>
           <p className="mt-3 max-w-3xl text-sm text-muted sm:text-base">

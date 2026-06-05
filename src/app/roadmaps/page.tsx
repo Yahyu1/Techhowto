@@ -18,7 +18,7 @@ export default function RoadmapsPage() {
           <p className="text-sm font-semibold uppercase tracking-widest text-cyan-300">
             Learning Tracks
           </p>
-          <h1 className="mt-3 font-display text-h1 font-bold text-white">
+          <h1 className="mt-3 font-display text-h1 font-bold text-text">
             Build Your Tech Career Path
           </h1>
           <p className="mx-auto mt-4 max-w-3xl text-muted">

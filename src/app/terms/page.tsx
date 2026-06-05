@@ -17,7 +17,7 @@ export default function TermsPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Terms of Service
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Terms for using {SITE.name}
           </h1>
           <p className="mt-3 text-sm text-muted">
@@ -27,7 +27,7 @@ export default function TermsPage() {
 
         <article className="glass glow-border space-y-6 rounded-3xl p-7 text-sm leading-relaxed text-muted sm:p-9">
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Acceptance of terms
             </h2>
             <p className="mt-2">
@@ -37,7 +37,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Content usage
             </h2>
             <p className="mt-2">
@@ -48,7 +48,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Affiliate and sponsor disclosures
             </h2>
             <p className="mt-2">
@@ -59,7 +59,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Disclaimer of warranties
             </h2>
             <p className="mt-2">
@@ -70,7 +70,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Limitation of liability
             </h2>
             <p className="mt-2">
@@ -81,7 +81,7 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Contact
             </h2>
             <p className="mt-2">

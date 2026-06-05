@@ -31,7 +31,7 @@ function contentToHtml(markdown: string): string {
     if (line.startsWith("```")) {
       if (!inCode) {
         inCode = true;
-        html += "<pre class='mt-4 overflow-x-auto rounded-xl border border-white/10 bg-black/40 p-4'><code>";
+        html += "<pre class='mt-4 overflow-x-auto rounded-xl border border-border bg-black/40 p-4'><code>";
       } else {
         inCode = false;
         html += "</code></pre>";
@@ -54,7 +54,7 @@ function contentToHtml(markdown: string): string {
       }
       const heading = line.replace("## ", "").trim();
       const id = heading.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-      html += `<h2 id="${id}" class="mt-10 text-2xl font-semibold text-white">${heading}</h2>`;
+      html += `<h2 id="${id}" class="mt-10 text-2xl font-semibold text-text">${heading}</h2>`;
       continue;
     }
 
@@ -63,7 +63,7 @@ function contentToHtml(markdown: string): string {
         html += "<ul class='mt-4 space-y-2'>";
         inList = true;
       }
-      html += `<li class='rounded-lg bg-white/5 px-3 py-2 text-sm text-white/85'>${line.replace(
+      html += `<li class='rounded-lg bg-elevated px-3 py-2 text-sm text-text/85'>${line.replace(
         /^\d+\.\s+/,
         ""
       )}</li>`;
@@ -75,7 +75,7 @@ function contentToHtml(markdown: string): string {
         html += "<ul class='mt-4 space-y-2'>";
         inList = true;
       }
-      html += `<li class='rounded-lg bg-white/5 px-3 py-2 text-sm text-white/85'>${line
+      html += `<li class='rounded-lg bg-elevated px-3 py-2 text-sm text-text/85'>${line
         .replace("- ", "")
         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}</li>`;
       continue;
@@ -89,7 +89,7 @@ function contentToHtml(markdown: string): string {
       continue;
     }
 
-    html += `<p class='mt-4 leading-relaxed text-white/85'>${line
+    html += `<p class='mt-4 leading-relaxed text-text/85'>${line
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/`([^`]+)`/g, "<code class='rounded bg-black/40 px-1 py-0.5 text-cyan-300'>$1</code>")}</p>`;
   }
@@ -127,7 +127,7 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
             <p className="text-xs uppercase tracking-wider text-cyan-300">
               {article.category}
             </p>
-            <h1 className="mt-3 font-display text-h1 font-bold text-white">
+            <h1 className="mt-3 font-display text-h1 font-bold text-text">
               {article.title}
             </h1>
             <p className="mt-4 text-muted">{article.excerpt}</p>
@@ -146,16 +146,16 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
 
-          <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="font-display text-lg font-semibold text-white">
+          <div className="mt-10 rounded-2xl border border-border bg-elevated p-5">
+            <h3 className="font-display text-lg font-semibold text-text">
               About the author
             </h3>
             <div className="mt-4 flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 text-sm font-bold text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 text-sm font-bold text-text">
                 {article.author.avatar}
               </div>
               <div>
-                <p className="font-semibold text-white">{article.author.name}</p>
+                <p className="font-semibold text-text">{article.author.name}</p>
                 <p className="text-sm text-cyan-300">{article.author.role}</p>
                 <p className="mt-2 text-sm text-muted">{article.author.bio}</p>
               </div>
@@ -163,7 +163,7 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
           </div>
 
           <div className="mt-8 rounded-2xl border border-indigo-400/25 bg-indigo-500/10 p-5">
-            <h3 className="font-display text-lg font-semibold text-white">
+            <h3 className="font-display text-lg font-semibold text-text">
               Join our newsletter
             </h3>
             <p className="mt-2 text-sm text-muted">
@@ -172,7 +172,7 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
             </p>
             <Link
               href="/newsletter"
-              className="mt-4 inline-flex rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110"
+              className="mt-4 inline-flex rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-text transition hover:brightness-110"
             >
               Subscribe now
             </Link>
@@ -181,7 +181,7 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
 
         <aside className="space-y-4">
           <section className="glass rounded-2xl p-5">
-            <h3 className="font-display text-lg font-semibold text-white">
+            <h3 className="font-display text-lg font-semibold text-text">
               Table of contents
             </h3>
             {headings.length === 0 ? (
@@ -208,7 +208,7 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
       </div>
 
       <section className="mt-14">
-        <h2 className="font-display text-h2 font-semibold text-white">
+        <h2 className="font-display text-h2 font-semibold text-text">
           Related Articles
         </h2>
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

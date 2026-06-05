@@ -53,7 +53,7 @@ export function TemplatesMarketplaceClient({
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Search templates by use-case, stack, or feature..."
-              className="w-full rounded-lg border border-white/15 bg-black/35 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-cyan-400"
+              className="w-full rounded-lg border border-border bg-black/35 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-cyan-400"
             />
           </label>
 
@@ -66,7 +66,7 @@ export function TemplatesMarketplaceClient({
                 className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
                   activeCategory === category
                     ? "border-cyan-400/40 bg-cyan-500/20 text-cyan-200"
-                    : "border-white/10 bg-white/5 text-muted hover:border-white/20 hover:text-white"
+                    : "border-border bg-elevated text-muted hover:border-border hover:text-text"
                 }`}
               >
                 {category}
@@ -90,7 +90,7 @@ export function TemplatesMarketplaceClient({
                 {"★".repeat(Math.round(template.rating))}
               </span>
             </div>
-            <h3 className="mt-4 font-display text-xl font-semibold text-white">
+            <h3 className="mt-4 font-display text-xl font-semibold text-text">
               {template.name}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -100,7 +100,7 @@ export function TemplatesMarketplaceClient({
               {template.tech.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[11px] text-muted"
+                  className="rounded-full border border-border bg-elevated px-2 py-1 text-[11px] text-muted"
                 >
                   {tag}
                 </span>
@@ -109,7 +109,7 @@ export function TemplatesMarketplaceClient({
             <div className="mt-5 flex items-center justify-between">
               <div>
                 <p className="text-xs text-muted">Price</p>
-                <p className="text-lg font-semibold text-white">{template.price}</p>
+                <p className="text-lg font-semibold text-text">{template.price}</p>
               </div>
               <Button size="sm">View Template</Button>
             </div>

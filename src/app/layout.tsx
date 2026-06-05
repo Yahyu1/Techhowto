@@ -53,6 +53,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('techhowto-theme');var d=document.documentElement;if(t==='light'||t==='dark'){d.classList.add(t);}else if(!t||t==='system'){d.classList.add(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}}catch(e){document.documentElement.classList.add('dark');}})();`,
+          }}
+        />
         {schemas.map((schema, i) => (
           <script
             key={i}

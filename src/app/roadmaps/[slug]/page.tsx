@@ -59,7 +59,7 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
             Roadmaps
           </Link>
           <ChevronRight size={14} />
-          <span className="text-white">{roadmap.title}</span>
+          <span className="text-text">{roadmap.title}</span>
         </nav>
 
         <header className="glass glow-border rounded-3xl p-6 sm:p-10">
@@ -71,7 +71,7 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
               {roadmap.duration}
             </span>
           </div>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             {roadmap.title}
           </h1>
           <p className="mt-4 max-w-4xl text-muted">{roadmap.description}</p>
@@ -92,14 +92,14 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
 
         <section className="mt-8 grid gap-6 lg:grid-cols-3">
           <article className="glass rounded-2xl p-6">
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Core Skills
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {roadmap.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-muted"
+                  className="rounded-lg border border-border bg-elevated px-3 py-1.5 text-xs text-muted"
                 >
                   {skill}
                 </span>
@@ -108,12 +108,12 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
           </article>
 
           <article className="glass rounded-2xl p-6">
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Recommended Tools
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-muted">
               {roadmap.tools.map((tool) => (
-                <li key={tool} className="rounded-lg bg-white/5 px-3 py-2">
+                <li key={tool} className="rounded-lg bg-elevated px-3 py-2">
                   {tool}
                 </li>
               ))}
@@ -121,13 +121,13 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
           </article>
 
           <article className="glass rounded-2xl p-6">
-            <h2 className="font-display text-xl font-semibold text-white">
+            <h2 className="font-display text-xl font-semibold text-text">
               Projects to Build
             </h2>
             <ul className="mt-4 space-y-3">
               {roadmap.projects.map((project) => (
-                <li key={project.title} className="rounded-xl bg-white/5 p-3">
-                  <h3 className="font-semibold text-white">{project.title}</h3>
+                <li key={project.title} className="rounded-xl bg-elevated p-3">
+                  <h3 className="font-semibold text-text">{project.title}</h3>
                   <p className="mt-1 text-sm text-muted">{project.description}</p>
                 </li>
               ))}
@@ -137,21 +137,21 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
 
         <section className="mt-10">
           <div className="glass glow-border rounded-3xl p-6 sm:p-8">
-            <h2 className="font-display text-h2 font-semibold text-white">
+            <h2 className="font-display text-h2 font-semibold text-text">
               Phase Timeline
             </h2>
             <div className="mt-8 space-y-6">
               {roadmap.phases.map((phase, index) => (
                 <article key={phase.title} className="grid gap-4 md:grid-cols-[auto_1fr]">
                   <div className="flex items-start gap-3">
-                    <span className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 text-sm font-bold text-white">
+                    <span className="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 text-sm font-bold text-text">
                       {index + 1}
                     </span>
                     <div className="hidden h-full min-h-16 w-px bg-white/10 md:block" />
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div className="rounded-2xl border border-border bg-elevated p-5">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <h3 className="font-display text-xl font-semibold text-white">
+                      <h3 className="font-display text-xl font-semibold text-text">
                         {phase.title}
                       </h3>
                       <span className="text-xs text-cyan-300">{phase.duration}</span>
@@ -175,7 +175,7 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
 
         <section className="mt-10">
           <div className="glass rounded-3xl p-6 sm:p-8">
-            <h2 className="font-display text-h2 font-semibold text-white">
+            <h2 className="font-display text-h2 font-semibold text-text">
               Learning Resources
             </h2>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -185,12 +185,12 @@ export default async function RoadmapDetailPage({ params }: RoadmapDetailPagePro
                   href={resource.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="glass-hover rounded-2xl border border-white/10 bg-white/5 p-4 transition"
+                  className="glass-hover rounded-2xl border border-border bg-elevated p-4 transition"
                 >
                   <p className="text-xs uppercase tracking-wide text-cyan-300">
                     {resource.type}
                   </p>
-                  <p className="mt-1 font-semibold text-white">{resource.title}</p>
+                  <p className="mt-1 font-semibold text-text">{resource.title}</p>
                   <p className="mt-2 text-xs text-muted">Open resource</p>
                 </a>
               ))}

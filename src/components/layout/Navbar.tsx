@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -44,7 +44,7 @@ export function Navbar() {
         className={cn(
           "fixed top-0 inset-x-0 z-50 transition-all duration-500",
           scrolled
-            ? "glass border-b border-white/8 shadow-lg shadow-black/20 py-3"
+            ? "glass border-b border-border shadow-lg shadow-black/10 dark:shadow-black/20 py-3"
             : "bg-transparent py-5"
         )}
         style={{ paddingTop: "max(0.75rem, env(safe-area-inset-top))" }}
@@ -62,7 +62,7 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     "relative px-4 py-2 text-sm font-medium transition-colors",
-                    active ? "text-white" : "text-muted hover:text-white"
+                    active ? "text-text" : "text-muted hover:text-text"
                   )}
                 >
                   {link.label}
@@ -81,11 +81,17 @@ export function Navbar() {
             {mounted && (
               <button
                 type="button"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-xl text-muted hover:text-white"
+                onClick={() =>
+                  setTheme(resolvedTheme === "dark" ? "light" : "dark")
+                }
+                className="glass glass-hover flex h-10 w-10 items-center justify-center rounded-xl text-muted hover:text-text"
                 aria-label="Toggle theme"
               >
-                {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                {resolvedTheme === "dark" ? (
+                  <Sun size={18} />
+                ) : (
+                  <Moon size={18} />
+                )}
               </button>
             )}
             <Button href="/newsletter" size="sm" className="hidden sm:inline-flex">
@@ -111,7 +117,8 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 backdrop-blur-sm lg:hidden"
+              style={{ background: "var(--surface-overlay)" }}
               onClick={() => setOpen(false)}
             />
             <motion.nav
@@ -119,7 +126,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 320 }}
-              className="fixed right-0 top-0 z-50 flex h-full w-[min(320px,85vw)] flex-col glass border-l border-white/10 p-6 pt-20 lg:hidden"
+              className="fixed right-0 top-0 z-50 flex h-full w-[min(320px,85vw)] flex-col glass border-l border-border p-6 pt-20 lg:hidden"
               aria-label="Mobile"
             >
               <div className="flex flex-col gap-1">
@@ -130,8 +137,8 @@ export function Navbar() {
                     className={cn(
                       "rounded-xl px-4 py-3.5 text-base font-medium transition-colors",
                       pathname.startsWith(link.href)
-                        ? "bg-white/10 text-white"
-                        : "text-muted hover:bg-white/5 hover:text-white"
+                        ? "bg-elevated text-text"
+                        : "text-muted hover:bg-elevated hover:text-text"
                     )}
                   >
                     {link.label}

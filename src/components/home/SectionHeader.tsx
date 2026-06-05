@@ -17,7 +17,7 @@ export function SectionHeader({
   return (
     <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h2 className="font-display text-h2 font-bold text-white">{title}</h2>
+        <h2 className="font-display text-h2 font-bold text-text">{title}</h2>
         {subtitle && (
           <p className="mt-2 max-w-2xl text-muted">{subtitle}</p>
         )}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { CodePreview } from "@/components/home/CodePreview";
 
 const stats = [
   { value: "120+", label: "Tutorials" },
@@ -11,23 +12,11 @@ const stats = [
   { value: "50K+", label: "Readers" },
 ];
 
-const codeSnippet = `// TechHowTo — ship faster
-const stack = {
-  frontend: ["React", "Next.js", "TypeScript"],
-  backend: ["Node", "PostgreSQL", "Redis"],
-  deploy: ["Vercel", "Docker", "CI/CD"],
-};
-
-export async function launch(product: Product) {
-  await validate(product);
-  return deploy(product);
-}`;
-
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-[120px]" />
+        <div className="absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-[120px] dark:bg-indigo-600/20" />
         <div className="absolute top-20 right-0 h-[300px] w-[400px] rounded-full bg-cyan-500/15 blur-[100px]" />
       </div>
 
@@ -38,12 +27,12 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-sm text-cyan-400">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-sm text-cyan-500 dark:text-cyan-400">
               <Sparkles size={14} />
               Premium developer platform
             </div>
 
-            <h1 className="font-display text-hero font-bold">
+            <h1 className="font-display text-hero font-bold text-text">
               <span className="block">Learn.</span>
               <span className="block">Build.</span>
               <span className="block gradient-text">Launch.</span>
@@ -88,21 +77,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="relative"
           >
-            <div className="glass glow-border aurora rounded-2xl p-1 animate-float">
-              <div className="rounded-xl bg-[#0a0f1e] p-4 sm:p-6">
-                <div className="mb-3 flex items-center gap-2">
-                  <span className="h-3 w-3 rounded-full bg-red-500/80" />
-                  <span className="h-3 w-3 rounded-full bg-yellow-500/80" />
-                  <span className="h-3 w-3 rounded-full bg-green-500/80" />
-                  <span className="ml-2 font-mono text-xs text-muted">
-                    launch.ts
-                  </span>
-                </div>
-                <pre className="overflow-x-auto font-mono text-xs leading-relaxed text-cyan-300/90 sm:text-sm">
-                  <code>{codeSnippet}</code>
-                </pre>
-              </div>
-            </div>
+            <CodePreview />
           </motion.div>
         </div>
       </div>

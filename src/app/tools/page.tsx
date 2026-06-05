@@ -33,7 +33,7 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
     <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="mb-8">
-          <h1 className="font-display text-h2 font-bold text-white">Developer Tools</h1>
+          <h1 className="font-display text-h2 font-bold text-text">Developer Tools</h1>
           <p className="mt-2 max-w-3xl text-muted">
             Fast, practical utilities that run fully in your browser.
           </p>
@@ -46,11 +46,11 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
               name="q"
               defaultValue={typeof params.q === "string" ? params.q : ""}
               placeholder="Search tools..."
-              className="w-full rounded-lg border border-white/15 bg-black/35 px-3 py-2 text-sm outline-none focus:border-cyan-400"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 text-sm outline-none focus:border-cyan-400"
             />
             <button
               type="submit"
-              className="rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white"
+              className="rounded-lg bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-text"
             >
               Search
             </button>
@@ -66,7 +66,7 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                   className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
                     isActive
                       ? "bg-cyan-500/20 text-cyan-300"
-                      : "glass-hover border border-white/10 text-muted"
+                      : "glass-hover border border-border text-muted"
                   }`}
                 >
                   {item}
@@ -86,10 +86,10 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
               <div className="flex items-start gap-3">
                 <span className="text-2xl">{tool.icon}</span>
                 <div>
-                  <h2 className="font-semibold text-white">{tool.name}</h2>
+                  <h2 className="font-semibold text-text">{tool.name}</h2>
                   <p className="mt-1 text-xs text-cyan-300">{tool.category}</p>
                   <p className="mt-2 text-sm text-muted">{tool.description}</p>
-                  <p className="mt-3 font-mono text-xs text-white/50">{tool.slug}</p>
+                  <p className="mt-3 font-mono text-xs text-text/50">{tool.slug}</p>
                 </div>
               </div>
             </Link>

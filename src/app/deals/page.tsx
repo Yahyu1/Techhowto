@@ -56,7 +56,7 @@ export default function DealsPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
             Deals and Discounts
           </p>
-          <h1 className="mt-4 font-display text-h1 font-bold text-white">
+          <h1 className="mt-4 font-display text-h1 font-bold text-text">
             Save on tools you already use
           </h1>
           <p className="mt-3 max-w-3xl text-sm text-muted sm:text-base">
@@ -69,7 +69,7 @@ export default function DealsPage() {
           {deals.map((deal) => (
             <article key={deal.name} className="glass glow-border rounded-2xl p-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <h2 className="font-display text-2xl font-semibold text-white">
+                <h2 className="font-display text-2xl font-semibold text-text">
                   {deal.name}
                 </h2>
                 <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">
@@ -79,7 +79,7 @@ export default function DealsPage() {
               <p className="mt-2 text-lg font-semibold text-cyan-200">{deal.offer}</p>
               <p className="mt-3 text-sm text-muted">{deal.description}</p>
               <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                <p className="rounded-lg border border-white/10 bg-black/30 px-3 py-2 font-mono text-sm text-white">
+                <p className="rounded-lg border border-border bg-black/30 px-3 py-2 font-mono text-sm text-text">
                   Code: {deal.code}
                 </p>
                 <Button href={deal.href} size="sm">
