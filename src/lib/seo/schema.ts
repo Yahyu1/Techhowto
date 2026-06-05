@@ -9,6 +9,18 @@ export function organizationSchema() {
     url: SITE.url,
     logo: `${SITE.url}/icon-512.png`,
     description: SITE.description,
+    email: SITE.email,
+    telephone: SITE.phone,
+    foundingDate: SITE.founded,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: SITE.phone,
+        email: SITE.email,
+        contactType: "customer support",
+        availableLanguage: ["English"],
+      },
+    ],
     sameAs: [
       "https://twitter.com/techhowto",
       "https://github.com/techhowto",
@@ -32,6 +44,17 @@ export function websiteSchema() {
   };
 }
 
+export function blogSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: `${SITE.name} Blog`,
+    url: `${SITE.url}/blog`,
+    description: "Programming tutorials, web development guides, and technology articles.",
+    publisher: organizationSchema(),
+  };
+}
+
 export function articleSchema(article: Article) {
   return {
     "@context": "https://schema.org",
@@ -39,12 +62,28 @@ export function articleSchema(article: Article) {
     headline: article.title,
     description: article.excerpt,
     datePublished: article.date,
+    dateModified: article.updatedAt ?? article.date,
     author: {
       "@type": "Person",
       name: article.author.name,
+      url: `${SITE.url}/authors/${article.author.slug}`,
     },
     publisher: organizationSchema(),
     mainEntityOfPage: `${SITE.url}/blog/${article.slug}`,
+    articleSection: article.category,
+    keywords: article.tags.join(", "),
+    wordCount: article.content.split(/\s+/).length,
+  };
+}
+
+export function contactPageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: `Contact ${SITE.name}`,
+    url: `${SITE.url}/contact-us`,
+    description: `Contact ${SITE.name} for editorial, business, and support inquiries.`,
+    mainEntity: organizationSchema(),
   };
 }
 

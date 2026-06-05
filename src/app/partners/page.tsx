@@ -90,7 +90,7 @@ export default function PartnersPage() {
             and media kit within 2 business days.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Button href="/contact">Contact Partnerships</Button>
+            <Button href="/contact-us">Contact Partnerships</Button>
             <Button
               href={`mailto:${SITE.email}?subject=Partnership%20Inquiry`}
               variant="secondary"

@@ -77,7 +77,7 @@ export function buildSearchIndex(): SearchEntry[] {
       type: "Page" as const,
       title: "About TechHowTo",
       excerpt: "Our mission, team, and editorial standards.",
-      href: "/about",
+      href: "/about-us",
       tags: ["about", "team"],
     },
     {
@@ -85,7 +85,7 @@ export function buildSearchIndex(): SearchEntry[] {
       type: "Page" as const,
       title: "Contact",
       excerpt: `Reach the ${SITE.name} team.`,
-      href: "/contact",
+      href: "/contact-us",
       tags: ["contact", "support"],
     },
   ];

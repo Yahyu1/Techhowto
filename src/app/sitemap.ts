@@ -3,6 +3,9 @@ import { SITE } from "@/lib/constants";
 import { getAllArticleSlugs } from "@/lib/data/articles";
 import { getAllRoadmapSlugs } from "@/lib/data/roadmaps";
 import { getAllDevToolSlugs } from "@/lib/data/dev-tools";
+import { getAllSeoCategorySlugs } from "@/lib/data/seo-categories";
+import { getAllTagSlugs } from "@/lib/data/tags";
+import { getAllAuthorSlugs } from "@/lib/data/authors";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.url;
@@ -12,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/blog",
     "/blog/archive",
+    "/archive",
     "/roadmaps",
     "/tools",
     "/newsletter",
@@ -22,10 +26,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/partners",
     "/search",
     "/categories",
-    "/about",
-    "/contact",
-    "/privacy",
-    "/terms",
+    "/tags",
+    "/authors",
+    "/about-us",
+    "/contact-us",
+    "/privacy-policy",
+    "/terms-and-conditions",
+    "/disclaimer",
+    "/cookie-policy",
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
@@ -54,5 +62,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...articles, ...roadmaps, ...tools];
+  const categories = getAllSeoCategorySlugs().map((slug) => ({
+    url: `${base}/categories/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.75,
+  }));
+
+  const tags = getAllTagSlugs().map((slug) => ({
+    url: `${base}/tags/${slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.65,
+  }));
+
+  const authorPages = getAllAuthorSlugs().map((slug) => ({
+    url: `${base}/authors/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...articles, ...roadmaps, ...tools, ...categories, ...tags, ...authorPages];
 }

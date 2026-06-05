@@ -7,9 +7,10 @@ import { ReadingProgressBar } from "./ReadingProgressBar";
 import { ArticleInteractions } from "./ArticleInteractions";
 import { ArticleComments } from "./ArticleComments";
 import { SummarizeModal } from "./SummarizeModal";
-import { ArticleCard } from "./ArticleCard";
 import { AIRecommendations } from "@/components/ai/AIRecommendations";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { InternalLinking } from "./InternalLinking";
+import { SocialShare } from "./SocialShare";
+import { ChevronLeft, ChevronRight, Calendar, Clock } from "lucide-react";
 
 interface Heading {
   id: string;
@@ -19,6 +20,10 @@ interface Heading {
 interface ArticlePageClientProps {
   article: Article;
   related: Article[];
+  latest: Article[];
+  popular: Article[];
+  recommended: Article[];
+  categoryArticles: Article[];
   prev?: Article | null;
   next?: Article | null;
 }
@@ -118,7 +123,16 @@ function getHeadings(markdown: string): Heading[] {
     });
 }
 
-export function ArticlePageClient({ article, related, prev, next }: ArticlePageClientProps) {
+export function ArticlePageClient({
+  article,
+  related,
+  latest,
+  popular,
+  recommended,
+  categoryArticles,
+  prev,
+  next,
+}: ArticlePageClientProps) {
   const contentHtml = useMemo(() => contentToHtml(article.content), [article.content]);
   const headings = useMemo(() => getHeadings(article.content), [article.content]);
 
@@ -128,13 +142,48 @@ export function ArticlePageClient({ article, related, prev, next }: ArticlePageC
       <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
         <article id="article-content" className="glass glow-border rounded-3xl p-6 sm:p-8">
           <header>
-            <p className="text-xs uppercase tracking-wider text-cyan-300">
+            <Link
+              href={`/categories/${article.categorySlug}`}
+              className="text-xs uppercase tracking-wider text-cyan-300 hover:underline"
+            >
               {article.category}
-            </p>
+            </Link>
             <h1 className="mt-3 font-display text-h1 font-bold text-text">
               {article.title}
             </h1>
             <p className="mt-4 text-muted">{article.excerpt}</p>
+            <div className="mt-5 flex flex-wrap items-center gap-4 text-sm text-muted">
+              <Link href={`/authors/${article.author.slug}`} className="font-medium text-text hover:text-cyan-400">
+                {article.author.name}
+              </Link>
+              <span className="flex items-center gap-1">
+                <Calendar size={14} />
+                Published {article.date}
+              </span>
+              {article.updatedAt && article.updatedAt !== article.date && (
+                <span>Updated {article.updatedAt}</span>
+              )}
+              <span className="flex items-center gap-1">
+                <Clock size={14} />
+                {article.readTime}
+              </span>
+            </div>
+            {article.tags.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {article.tags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/tags/${tag}`}
+                    className="rounded-lg bg-elevated px-2.5 py-1 text-xs text-muted hover:text-cyan-400"
+                  >
+                    #{tag}
+                  </Link>
+                ))}
+              </div>
+            )}
+            <div className="mt-5">
+              <SocialShare title={article.title} path={`/blog/${article.slug}`} />
+            </div>
           </header>
 
           <div className="mt-6">
@@ -235,16 +284,14 @@ export function ArticlePageClient({ article, related, prev, next }: ArticlePageC
         </aside>
       </div>
 
-      <section className="mt-14">
-        <h2 className="font-display text-h2 font-semibold text-text">
-          Related Articles
-        </h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {related.map((item) => (
-            <ArticleCard key={item.id} article={item} />
-          ))}
-        </div>
-      </section>
+      <InternalLinking
+        related={related}
+        latest={latest}
+        popular={popular}
+        recommended={recommended}
+        categoryArticles={categoryArticles}
+        categoryName={article.category}
+      />
     </>
   );
 }

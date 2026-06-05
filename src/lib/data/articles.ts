@@ -9,9 +9,11 @@ export const articles: Article[] = [
     excerpt:
       "Our top picks for chatbots, coding assistants, image generators, and research tools this year.",
     category: "AI Tools",
+    categorySlug: "ai",
     tags: ["ai", "tools", "chatgpt", "claude", "productivity"],
     author: authors["alex-chen"],
     date: "2026-05-28",
+    updatedAt: "2026-06-01",
     readTime: "12 min",
     views: 48200,
     featured: true,
@@ -48,9 +50,11 @@ We evaluate latency, output quality, pricing transparency, privacy controls, and
     excerpt:
       "Head-to-head comparison on writing, coding, reasoning, pricing, and which to choose.",
     category: "Comparisons",
+    categorySlug: "ai",
     tags: ["chatgpt", "claude", "comparison", "ai"],
     author: authors["alex-chen"],
     date: "2026-05-20",
+    updatedAt: "2026-05-25",
     readTime: "10 min",
     views: 35600,
     featured: true,
@@ -84,9 +88,11 @@ Choose **Claude** for writing and document analysis. Choose **ChatGPT** for gene
     excerpt:
       "Solve update errors, slow boot, disk space issues, and system file corruption.",
     category: "Windows",
+    categorySlug: "coding-tips",
     tags: ["windows", "troubleshooting", "updates"],
     author: authors["jordan-lee"],
     date: "2026-05-15",
+    updatedAt: "2026-05-18",
     readTime: "8 min",
     views: 29100,
     featured: false,
@@ -124,9 +130,11 @@ Use Storage Sense, remove old Windows Update files, and uninstall unused Store a
     excerpt:
       "Battery life, storage cleanup, privacy settings, and performance tweaks.",
     category: "Android",
+    categorySlug: "mobile-development",
     tags: ["android", "battery", "privacy", "mobile"],
     author: authors["jordan-lee"],
     date: "2026-05-10",
+    updatedAt: "2026-05-12",
     readTime: "7 min",
     views: 22400,
     featured: false,
@@ -156,9 +164,11 @@ Review per-app permissions, disable ad personalization, and enable Google Play P
     excerpt:
       "Latest model releases, pricing changes, and what they mean for everyday users.",
     category: "News",
+    categorySlug: "tech-news",
     tags: ["ai", "news", "models", "industry"],
     author: authors["alex-chen"],
     date: "2026-06-01",
+    updatedAt: "2026-06-03",
     readTime: "6 min",
     views: 18700,
     featured: true,
@@ -216,4 +226,47 @@ export function getAdjacentArticles(slug: string): {
     prev: index < sorted.length - 1 ? sorted[index + 1] : null,
     next: index > 0 ? sorted[index - 1] : null,
   };
+}
+
+export function getRelatedArticles(article: Article, limit = 3): Article[] {
+  return articles
+    .filter((item) => item.slug !== article.slug)
+    .map((item) => {
+      const sharedTags = item.tags.filter((t) => article.tags.includes(t)).length;
+      const sameCategory = item.categorySlug === article.categorySlug ? 2 : 0;
+      return { item, score: sharedTags + sameCategory };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ item }) => item);
+}
+
+export function getPopularArticles(limit = 6): Article[] {
+  return [...articles].sort((a, b) => b.views - a.views).slice(0, limit);
+}
+
+export function getRecommendedArticles(article: Article, limit = 3): Article[] {
+  return articles
+    .filter((item) => item.slug !== article.slug && item.featured)
+    .slice(0, limit);
+}
+
+export function getArticlesByCategorySlug(slug: string): Article[] {
+  return articles.filter((a) => a.categorySlug === slug);
+}
+
+export function getArticlesByTag(tag: string): Article[] {
+  return articles.filter((a) => a.tags.includes(tag));
+}
+
+export function getArticlesByAuthor(slug: string): Article[] {
+  return articles.filter((a) => a.author.slug === slug);
+}
+
+export function paginate<T>(items: T[], page: number, perPage = 12): { items: T[]; totalPages: number } {
+  const totalPages = Math.max(1, Math.ceil(items.length / perPage));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const start = (safePage - 1) * perPage;
+  return { items: items.slice(start, start + perPage), totalPages };
 }

@@ -4,9 +4,11 @@ export interface Article {
   title: string;
   excerpt: string;
   category: string;
+  categorySlug: string;
   tags: string[];
   author: Author;
   date: string;
+  updatedAt?: string;
   readTime: string;
   views: number;
   featured?: boolean;
@@ -15,6 +17,7 @@ export interface Article {
 }
 
 export interface Author {
+  slug: string;
   name: string;
   role: string;
   avatar: string;

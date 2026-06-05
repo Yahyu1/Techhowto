@@ -1,12 +1,14 @@
 {
   "name": "TechHowTo",
   "short_name": "TechHowTo",
-  "description": "Premium developer tutorials, roadmaps, and tools",
+  "description": "Programming tutorials, web development guides, developer roadmaps, and free tools.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050816",
   "theme_color": "#050816",
   "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["education", "productivity", "developer"],
   "icons": [
     {
       "src": "/icon-192.png",

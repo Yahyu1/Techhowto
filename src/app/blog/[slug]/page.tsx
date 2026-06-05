@@ -2,7 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE } from "@/lib/constants";
-import { getAllArticleSlugs, getArticleBySlug, articles, getAdjacentArticles } from "@/lib/data/articles";
+import {
+  getAllArticleSlugs,
+  getArticleBySlug,
+  getAdjacentArticles,
+  getRelatedArticles,
+  getLatestArticles,
+  getPopularArticles,
+  getRecommendedArticles,
+  getArticlesByCategorySlug,
+} from "@/lib/data/articles";
 import { createMetadata } from "@/lib/seo/metadata";
 import { articleSchema, breadcrumbSchema, personSchema } from "@/lib/seo/schema";
 import { ArticlePageClient } from "@/components/articles/ArticlePageClient";
@@ -47,9 +56,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  const related = articles
-    .filter((item) => item.slug !== article.slug)
-    .filter((item) => item.category === article.category || item.tags.some((tag) => article.tags.includes(tag)))
+  const related = getRelatedArticles(article, 3);
+  const latest = getLatestArticles(3).filter((a) => a.slug !== article.slug);
+  const popular = getPopularArticles(3).filter((a) => a.slug !== article.slug);
+  const recommended = getRecommendedArticles(article, 3);
+  const categoryArticles = getArticlesByCategorySlug(article.categorySlug)
+    .filter((a) => a.slug !== article.slug)
     .slice(0, 3);
 
   const { prev, next } = getAdjacentArticles(slug);
@@ -87,7 +99,16 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <span className="text-text">{article.title}</span>
         </nav>
 
-        <ArticlePageClient article={article} related={related} prev={prev} next={next} />
+        <ArticlePageClient
+          article={article}
+          related={related}
+          latest={latest}
+          popular={popular}
+          recommended={recommended}
+          categoryArticles={categoryArticles}
+          prev={prev}
+          next={next}
+        />
       </div>
     </div>
   );
