@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Windows Fixes — Step-by-Step Guides | TechHowTo</title>
+  <meta name="description" content="Fix Windows Update errors, corrupted system files, slow boot, and disk space issues on Windows 10 and 11."/>
+  <link rel="canonical" href="https://techhowto.com/windows-fixes.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="TechHowTo"/>
+  <meta property="og:title" content="Windows Fixes — Step-by-Step Guides | TechHowTo"/>
+  <meta property="og:description" content="Fix Windows Update errors, corrupted system files, slow boot, and disk space issues on Windows 10 and 11."/>
+  <meta property="og:url" content="https://techhowto.com/windows-fixes.html"/>
+  <meta property="og:image" content="https://techhowto.com/images/og-default.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Windows Fixes — Step-by-Step Guides | TechHowTo"/>
+  <meta name="twitter:description" content="Fix Windows Update errors, corrupted system files, slow boot, and disk space issues."/>
+  <meta name="twitter:image" content="https://techhowto.com/images/og-default.png"/>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <script src="js/theme.js"></script>
+</head>
+<body data-page="windows-fixes">
+
+<button id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<header>
+  <div class="header-left">
+    <a href="index.html" class="logo">TechHowTo</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+  <nav>
+    <a href="index.html" data-nav>Home</a>
+    <a href="ai-tools.html" data-nav>AI Tools</a>
+    <a href="blog.html" data-nav>Blog</a>
+    <a href="windows-fixes.html" data-nav>Windows Fixes</a>
+    <a href="android-guides.html" data-nav>Android Guides</a>
+    <a href="about.html" data-nav>About</a>
+    <a href="contact.html" data-nav>Contact</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-wrap">
+      <input class="search-input" type="search" aria-label="Search Windows fixes" autocomplete="off"/>
+      <div class="search-results" hidden></div>
+    </div>
+    <button class="theme-toggle" aria-pressed="false">🌙</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1>Windows Fixes</h1>
+  <p>Step-by-step guides for common Windows issues, with safe commands and restore points where relevant.</p>
+  <p class="page-meta"><span class="last-updated">Last updated: June 5, 2026</span><span>By Jordan Lee</span></p>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="two-col">
+    <div class="left">
+      <article class="content-card" id="update-stuck">
+        <h3>Fix Windows Update Stuck at 0%</h3>
+        <ol>
+          <li>Run Windows Update Troubleshooter: Settings → System → Troubleshoot → Other troubleshooters → Windows Update.</li>
+          <li>Reset update services (Terminal as Admin):
+            <pre><code>net stop wuauserv
+net stop cryptSvc &amp; net stop bits &amp; net stop msiserver
+ren C:\Windows\SoftwareDistribution SoftwareDistribution.old
+ren C:\Windows\System32\catroot2 catroot2.old
+net start wuauserv &amp; net start cryptSvc
+net start bits &amp; net start msiserver</code></pre>
+          </li>
+          <li>Reboot, then check for updates again.</li>
+        </ol>
+        <p class="muted"><strong>Tip:</strong> Ensure 10+ GB free disk space and pause VPNs during update.</p>
+      </article>
+      <article class="content-card" id="sfc-dism">
+        <h3>Repair Corrupted System Files</h3>
+        <ol>
+          <li>Open Terminal (Admin) and run: <pre><code>sfc /scannow</code></pre></li>
+          <li>If issues persist, run DISM: <pre><code>DISM /Online /Cleanup-Image /RestoreHealth</code></pre></li>
+          <li>Reboot and run <code>sfc /scannow</code> once more.</li>
+        </ol>
+        <p class="muted"><strong>Note:</strong> Keep a recent restore point before major repairs.</p>
+      </article>
+    </div>
+    <div class="right">
+      <article class="content-card" id="disk-space">
+        <h3>Free Up Disk Space</h3>
+        <ul class="list-check">
+          <li>Storage Sense: Settings → System → Storage → enable and run cleanup.</li>
+          <li>Disk Cleanup: Clean system files, remove old Windows updates.</li>
+          <li>Uninstall large apps: Settings → Apps (sort by size).</li>
+        </ul>
+      </article>
+      <article class="content-card" id="boot-speed">
+        <h3>Speed Up Boot Time</h3>
+        <ul class="list-check">
+          <li>Disable startup apps: Task Manager → Startup apps → Disable unnecessary.</li>
+          <li>Enable Fast Startup: Control Panel → Power Options.</li>
+          <li>Update GPU/chipset drivers; remove duplicate antivirus.</li>
+        </ul>
+      </article>
+      <article class="content-card">
+        <h3>Related Reading</h3>
+        <p><a href="blog/windows-11-fixes.html">→ Full Windows 11 Fixes Guide</a></p>
+        <p><a href="ai-tools.html#copilot">→ Use Microsoft Copilot for Windows help</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-topbar"></div>
+  <div class="footer-wrap">
+    <div class="footer-bottom" style="padding:22px 48px">
+      <div class="footer-copy">© 2026 <strong>TechHowTo</strong></div>
+      <div class="footer-legal">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/search.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
