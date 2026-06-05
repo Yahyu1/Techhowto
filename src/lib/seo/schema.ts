@@ -61,6 +61,17 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
   };
 }
 
+export function personSchema(author: { name: string; role: string; bio: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: author.name,
+    jobTitle: author.role,
+    description: author.bio,
+    worksFor: { "@type": "Organization", name: SITE.name },
+  };
+}
+
 export function faqSchema(faqs: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",

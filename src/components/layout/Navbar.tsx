@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Search, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/Button";
@@ -78,6 +78,13 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <Link
+              href="/search"
+              className="glass glass-hover hidden h-10 w-10 items-center justify-center rounded-xl text-muted hover:text-text sm:flex"
+              aria-label="Search"
+            >
+              <Search size={18} />
+            </Link>
             {mounted && (
               <button
                 type="button"

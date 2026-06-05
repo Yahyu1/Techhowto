@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE } from "@/lib/constants";
-import { getAllArticleSlugs, getArticleBySlug, articles } from "@/lib/data/articles";
+import { getAllArticleSlugs, getArticleBySlug, articles, getAdjacentArticles } from "@/lib/data/articles";
 import { createMetadata } from "@/lib/seo/metadata";
-import { articleSchema, breadcrumbSchema } from "@/lib/seo/schema";
+import { articleSchema, breadcrumbSchema, personSchema } from "@/lib/seo/schema";
 import { ArticlePageClient } from "@/components/articles/ArticlePageClient";
 import { ChevronRight } from "lucide-react";
 
@@ -52,8 +52,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     .filter((item) => item.category === article.category || item.tags.some((tag) => article.tags.includes(tag)))
     .slice(0, 3);
 
+  const { prev, next } = getAdjacentArticles(slug);
+
   const schemas = [
     articleSchema(article),
+    personSchema(article.author),
     breadcrumbSchema([
       { name: "Home", url: SITE.url },
       { name: "Blog", url: `${SITE.url}/blog` },
@@ -84,7 +87,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <span className="text-text">{article.title}</span>
         </nav>
 
-        <ArticlePageClient article={article} related={related} />
+        <ArticlePageClient article={article} related={related} prev={prev} next={next} />
       </div>
     </div>
   );

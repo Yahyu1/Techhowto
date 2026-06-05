@@ -121,6 +121,30 @@ export const devTools: DevTool[] = [
     category: "Generators",
     icon: "🏷️",
   },
+  {
+    id: "open-graph-generator",
+    slug: "open-graph-generator",
+    name: "Open Graph Generator",
+    description: "Generate Open Graph and Twitter Card meta tags for social sharing.",
+    category: "Generators",
+    icon: "🖼️",
+  },
+  {
+    id: "robots-txt-generator",
+    slug: "robots-txt-generator",
+    name: "Robots.txt Generator",
+    description: "Create robots.txt rules for crawlers and sitemap references.",
+    category: "Generators",
+    icon: "🤖",
+  },
+  {
+    id: "sitemap-generator",
+    slug: "sitemap-generator",
+    name: "Sitemap Generator",
+    description: "Build XML sitemaps from a list of URLs with priorities.",
+    category: "Generators",
+    icon: "🗺️",
+  },
 ];
 
 export const getDevToolBySlug = (slug: string): DevTool | undefined =>

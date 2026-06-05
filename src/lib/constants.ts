@@ -12,8 +12,17 @@ export const NAV_LINKS = [
   { href: "/categories", label: "Categories" },
   { href: "/roadmaps", label: "Roadmaps" },
   { href: "/tools", label: "Tools" },
+  { href: "/resources", label: "Resources" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
+] as const;
+
+export const MOBILE_NAV = [
+  { href: "/", label: "Home", icon: "home" },
+  { href: "/search", label: "Search", icon: "search" },
+  { href: "/roadmaps", label: "Roadmaps", icon: "roadmaps" },
+  { href: "/tools", label: "Tools", icon: "tools" },
+  { href: "/about", label: "Profile", icon: "profile" },
 ] as const;
 
 export const TRUSTED_BY = [

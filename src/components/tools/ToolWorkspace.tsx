@@ -124,6 +124,59 @@ function buildMetaTags(values: {
   ].join("\n");
 }
 
+function buildOpenGraphTags(values: {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  type: string;
+}): string {
+  const { title, description, url, image, type } = values;
+  return [
+    `<meta property="og:type" content="${type}" />`,
+    `<meta property="og:site_name" content="TechHowTo" />`,
+    `<meta property="og:title" content="${title}" />`,
+    `<meta property="og:description" content="${description}" />`,
+    `<meta property="og:url" content="${url}" />`,
+    `<meta property="og:image" content="${image}" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${title}" />`,
+    `<meta name="twitter:description" content="${description}" />`,
+    `<meta name="twitter:image" content="${image}" />`,
+  ].join("\n");
+}
+
+function buildRobotsTxt(values: {
+  userAgent: string;
+  allow: string;
+  path: string;
+  sitemap: string;
+}): string {
+  const lines = [
+    `User-agent: ${values.userAgent || "*"}`,
+    `${values.allow}: ${values.path || "/"}`,
+  ];
+  if (values.sitemap.trim()) {
+    lines.push("", `Sitemap: ${values.sitemap.trim()}`);
+  }
+  return lines.join("\n");
+}
+
+function buildSitemapXml(urls: string): string {
+  const list = urls
+    .split("\n")
+    .map((u) => u.trim())
+    .filter(Boolean);
+  const entries = list
+    .map(
+      (loc) => `  <url>\n    <loc>${loc}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`
+    )
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>`;
+}
+
 export function ToolWorkspace({ tool }: { tool: DevTool }) {
   const [input, setInput] = useState("");
   const [regexPattern, setRegexPattern] = useState("\\w+");
@@ -148,6 +201,15 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
     type: "website",
   });
   const [generatedCount, setGeneratedCount] = useState(1);
+  const [robotsValues, setRobotsValues] = useState({
+    userAgent: "*",
+    allow: "Allow",
+    path: "/",
+    sitemap: "https://techhowto.vercel.app/sitemap.xml",
+  });
+  const [sitemapUrls, setSitemapUrls] = useState(
+    "https://techhowto.vercel.app/\nhttps://techhowto.vercel.app/blog\nhttps://techhowto.vercel.app/tools"
+  );
 
   const output = useMemo(() => {
     try {
@@ -421,6 +483,92 @@ export function ToolWorkspace({ tool }: { tool: DevTool }) {
           </div>
         }
         output={<pre className={codeAreaClasses}>{uuids.join("\n")}</pre>}
+      />
+    );
+  }
+
+  if (tool.slug === "open-graph-generator") {
+    const og = buildOpenGraphTags(metaValues);
+    return (
+      <ToolShell
+        title={tool.name}
+        description={tool.description}
+        input={
+          <div className="space-y-3">
+            {(Object.keys(metaValues) as Array<keyof typeof metaValues>).map((key) => (
+              <input
+                key={key}
+                value={metaValues[key]}
+                onChange={(event) =>
+                  setMetaValues((prev) => ({ ...prev, [key]: event.target.value }))
+                }
+                placeholder={key}
+                className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+              />
+            ))}
+          </div>
+        }
+        output={<pre className={codeAreaClasses}>{og}</pre>}
+      />
+    );
+  }
+
+  if (tool.slug === "robots-txt-generator") {
+    const robots = buildRobotsTxt(robotsValues);
+    return (
+      <ToolShell
+        title={tool.name}
+        description={tool.description}
+        input={
+          <div className="space-y-3">
+            <input
+              value={robotsValues.userAgent}
+              onChange={(e) => setRobotsValues((p) => ({ ...p, userAgent: e.target.value }))}
+              placeholder="User-agent"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+            />
+            <select
+              value={robotsValues.allow}
+              onChange={(e) => setRobotsValues((p) => ({ ...p, allow: e.target.value }))}
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none"
+            >
+              <option value="Allow">Allow</option>
+              <option value="Disallow">Disallow</option>
+            </select>
+            <input
+              value={robotsValues.path}
+              onChange={(e) => setRobotsValues((p) => ({ ...p, path: e.target.value }))}
+              placeholder="Path (e.g. / or /admin)"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+            />
+            <input
+              value={robotsValues.sitemap}
+              onChange={(e) => setRobotsValues((p) => ({ ...p, sitemap: e.target.value }))}
+              placeholder="Sitemap URL"
+              className="w-full rounded-lg border border-border bg-black/35 px-3 py-2 font-mono text-sm outline-none focus:border-cyan-400"
+            />
+          </div>
+        }
+        output={<pre className={codeAreaClasses}>{robots}</pre>}
+      />
+    );
+  }
+
+  if (tool.slug === "sitemap-generator") {
+    const xml = buildSitemapXml(sitemapUrls);
+    return (
+      <ToolShell
+        title={tool.name}
+        description={tool.description}
+        input={
+          <textarea
+            value={sitemapUrls}
+            onChange={(e) => setSitemapUrls(e.target.value)}
+            placeholder={"https://example.com/\nhttps://example.com/about\nhttps://example.com/blog"}
+            className={codeAreaClasses}
+          />
+        }
+        output={<pre className={codeAreaClasses}>{xml}</pre>}
       />
     );
   }

@@ -202,3 +202,18 @@ export function getLatestArticles(limit = 6): Article[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit);
 }
+
+export function getAdjacentArticles(slug: string): {
+  prev: Article | null;
+  next: Article | null;
+} {
+  const sorted = [...articles].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+  const index = sorted.findIndex((a) => a.slug === slug);
+  if (index === -1) return { prev: null, next: null };
+  return {
+    prev: index < sorted.length - 1 ? sorted[index + 1] : null,
+    next: index > 0 ? sorted[index - 1] : null,
+  };
+}

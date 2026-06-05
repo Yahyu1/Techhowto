@@ -8,6 +8,8 @@ import { ArticleInteractions } from "./ArticleInteractions";
 import { ArticleComments } from "./ArticleComments";
 import { SummarizeModal } from "./SummarizeModal";
 import { ArticleCard } from "./ArticleCard";
+import { AIRecommendations } from "@/components/ai/AIRecommendations";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Heading {
   id: string;
@@ -17,6 +19,8 @@ interface Heading {
 interface ArticlePageClientProps {
   article: Article;
   related: Article[];
+  prev?: Article | null;
+  next?: Article | null;
 }
 
 function contentToHtml(markdown: string): string {
@@ -114,7 +118,7 @@ function getHeadings(markdown: string): Heading[] {
     });
 }
 
-export function ArticlePageClient({ article, related }: ArticlePageClientProps) {
+export function ArticlePageClient({ article, related, prev, next }: ArticlePageClientProps) {
   const contentHtml = useMemo(() => contentToHtml(article.content), [article.content]);
   const headings = useMemo(() => getHeadings(article.content), [article.content]);
 
@@ -172,14 +176,37 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
             </p>
             <Link
               href="/newsletter"
-              className="mt-4 inline-flex rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-text transition hover:brightness-110"
+              className="mt-4 inline-flex rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110"
             >
               Subscribe now
             </Link>
           </div>
+
+          {(prev || next) && (
+            <nav className="mt-10 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:justify-between">
+              {prev ? (
+                <Link href={`/blog/${prev.slug}`} className="glass glass-hover flex items-center gap-2 rounded-xl p-4 text-sm">
+                  <ChevronLeft size={16} />
+                  <div>
+                    <span className="text-xs text-muted">Previous</span>
+                    <p className="font-semibold text-text">{prev.title}</p>
+                  </div>
+                </Link>
+              ) : <div />}
+              {next && (
+                <Link href={`/blog/${next.slug}`} className="glass glass-hover flex items-center gap-2 rounded-xl p-4 text-sm sm:text-right">
+                  <div className="sm:order-1">
+                    <span className="text-xs text-muted">Next</span>
+                    <p className="font-semibold text-text">{next.title}</p>
+                  </div>
+                  <ChevronRight size={16} className="sm:order-2" />
+                </Link>
+              )}
+            </nav>
+          )}
         </article>
 
-        <aside className="space-y-4">
+        <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <section className="glass rounded-2xl p-5">
             <h3 className="font-display text-lg font-semibold text-text">
               Table of contents
@@ -203,6 +230,7 @@ export function ArticlePageClient({ article, related }: ArticlePageClientProps) 
           </section>
 
           <ArticleInteractions slug={article.slug} title={article.title} />
+          <AIRecommendations articles={related} />
           <ArticleComments slug={article.slug} />
         </aside>
       </div>

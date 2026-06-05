@@ -2,24 +2,23 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { GlassButton } from "@/components/ui/GlassButton";
 import { CodePreview } from "@/components/home/CodePreview";
+import { getSiteStats } from "@/lib/data/stats";
+import { GlassCard } from "@/components/ui/GlassCard";
 
-const stats = [
-  { value: "120+", label: "Tutorials" },
-  { value: "10", label: "Roadmaps" },
-  { value: "15", label: "Dev Tools" },
-  { value: "50K+", label: "Readers" },
+const stats = getSiteStats();
+
+const statItems = [
+  { value: String(stats.articles), label: "Articles" },
+  { value: String(stats.roadmaps), label: "Roadmaps" },
+  { value: String(stats.tools), label: "Dev Tools" },
+  { value: stats.readers, label: "Readers" },
 ];
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-indigo-600/20 blur-[120px] dark:bg-indigo-600/20" />
-        <div className="absolute top-20 right-0 h-[300px] w-[400px] rounded-full bg-cyan-500/15 blur-[100px]" />
-      </div>
-
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
@@ -44,28 +43,29 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Button href="/roadmaps" size="lg">
+              <GlassButton href="/roadmaps" variant="primary" size="lg">
                 Start Learning
                 <ArrowRight size={18} className="ml-2" />
-              </Button>
-              <Button href="/roadmaps" variant="secondary" size="lg">
+              </GlassButton>
+              <GlassButton href="/roadmaps" variant="glass" size="lg">
                 Explore Roadmaps
-              </Button>
+              </GlassButton>
             </div>
 
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {stats.map((stat, i) => (
+              {statItems.map((stat, i) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + i * 0.1 }}
-                  className="glass glow-border rounded-xl p-4"
                 >
-                  <div className="font-display text-2xl font-bold gradient-text">
-                    {stat.value}
-                  </div>
-                  <div className="mt-1 text-xs text-muted">{stat.label}</div>
+                  <GlassCard glow padding="sm">
+                    <div className="font-display text-2xl font-bold gradient-text">
+                      {stat.value}
+                    </div>
+                    <div className="mt-1 text-xs text-muted">{stat.label}</div>
+                  </GlassCard>
                 </motion.div>
               ))}
             </div>
@@ -75,7 +75,6 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative"
           >
             <CodePreview />
           </motion.div>

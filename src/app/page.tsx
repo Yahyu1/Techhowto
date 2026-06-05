@@ -10,6 +10,7 @@ import {
 } from "@/lib/data/articles";
 import { roadmaps } from "@/lib/data/roadmaps";
 import { devTools } from "@/lib/data/dev-tools";
+import { categories } from "@/lib/data/categories";
 import Link from "next/link";
 import { ArrowRight, Wrench } from "lucide-react";
 
@@ -118,6 +119,34 @@ export default function HomePage() {
                   </div>
                   <div className="text-xs text-muted">{tool.category}</div>
                 </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            title="Popular Categories"
+            subtitle="Explore content by topic"
+            href="/categories"
+          />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {categories.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/blog?category=${encodeURIComponent(cat.name)}`}
+                className="glass glow-border glass-hover group rounded-2xl p-6 transition-all hover:-translate-y-1"
+              >
+                <span className="text-3xl">{cat.icon}</span>
+                <h3 className="mt-3 font-display text-lg font-semibold text-text group-hover:text-cyan-300 transition-colors">
+                  {cat.name}
+                </h3>
+                <p className="mt-1 text-sm text-muted line-clamp-2">{cat.description}</p>
+                <span className="mt-3 inline-block text-xs font-semibold text-cyan-400">
+                  {cat.articleCount} article{cat.articleCount === 1 ? "" : "s"}
+                </span>
               </Link>
             ))}
           </div>

@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Flame, Home, LayoutGrid, Search, User } from "lucide-react";
+import { Home, Search, Map, Wrench, User } from "lucide-react";
+import { MOBILE_NAV } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const items = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/categories", label: "Categories", icon: LayoutGrid },
-  { href: "/search", label: "Search", icon: Search },
-  { href: "/blog?sort=trending", label: "Trending", icon: Flame },
-  { href: "/about", label: "Profile", icon: User },
-];
+const iconMap = {
+  home: Home,
+  search: Search,
+  roadmaps: Map,
+  tools: Wrench,
+  profile: User,
+} as const;
 
 export function MobileBottomNav() {
   const pathname = usePathname();
@@ -23,11 +24,10 @@ export function MobileBottomNav() {
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="mx-auto flex max-w-lg items-stretch justify-around px-2 py-2">
-        {items.map(({ href, label, icon: Icon }) => {
+        {MOBILE_NAV.map(({ href, label, icon }) => {
+          const Icon = iconMap[icon];
           const active =
-            href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(href.split("?")[0]);
+            href === "/" ? pathname === "/" : pathname.startsWith(href);
           return (
             <Link
               key={href}

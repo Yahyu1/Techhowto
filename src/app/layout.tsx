@@ -4,6 +4,10 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AuroraBackground } from "@/components/effects/AuroraBackground";
+import { FloatingParticles } from "@/components/effects/FloatingParticles";
+import { StickyNewsletterCTA } from "@/components/conversion/StickyNewsletterCTA";
+import { ExitIntentModal } from "@/components/conversion/ExitIntentModal";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
 import { createMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/constants";
@@ -70,10 +74,14 @@ export default function RootLayout({
         className={`${inter.variable} ${interTight.variable} ${jetbrains.variable} pb-nav lg:pb-0`}
       >
         <ThemeProvider>
+          <AuroraBackground />
+          <FloatingParticles count={18} />
           <Navbar />
           <main>{children}</main>
           <Footer />
           <MobileBottomNav />
+          <StickyNewsletterCTA />
+          <ExitIntentModal />
         </ThemeProvider>
       </body>
     </html>

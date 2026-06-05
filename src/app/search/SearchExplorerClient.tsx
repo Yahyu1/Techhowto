@@ -5,14 +5,9 @@ import Link from "next/link";
 import Fuse from "fuse.js";
 import { Search } from "lucide-react";
 
-export interface SearchEntry {
-  id: string;
-  type: "Article" | "Roadmap" | "Tool";
-  title: string;
-  excerpt: string;
-  href: string;
-  tags: string[];
-}
+import type { SearchEntry } from "@/lib/data/search-index";
+
+export type { SearchEntry };
 
 interface SearchExplorerClientProps {
   entries: SearchEntry[];

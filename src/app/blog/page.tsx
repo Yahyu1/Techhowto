@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { articles } from "@/lib/data/articles";
 import { createMetadata } from "@/lib/seo/metadata";
 import { BlogCategoryFilter } from "@/components/articles/BlogCategoryFilter";
+import { PageHeader } from "@/components/layout/PageHeader";
+import Link from "next/link";
 
 export const metadata: Metadata = createMetadata({
   title: "Tech Blog",
@@ -18,21 +21,21 @@ export default function BlogPage() {
   return (
     <div className="py-10 sm:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest text-indigo-300">
-            Editorial Hub
-          </p>
-          <h1 className="mt-3 font-display text-h1 font-bold text-text">
-            Insights for Modern Builders
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-muted">
-            Deep dives and practical guides on AI workflows, developer tools,
-            operating systems, and productivity engineering.
-          </p>
+        <PageHeader
+          eyebrow="Editorial Hub"
+          title="Insights for Modern Builders"
+          description="Deep dives and practical guides on AI workflows, developer tools, operating systems, and productivity engineering."
+        />
+        <div className="mt-6 text-center">
+          <Link href="/blog/archive" className="text-sm font-semibold text-cyan-400 hover:text-cyan-300">
+            Browse archive →
+          </Link>
         </div>
       </div>
 
-      <BlogCategoryFilter articles={sortedArticles} />
+      <Suspense fallback={<div className="py-16 text-center text-muted">Loading articles...</div>}>
+        <BlogCategoryFilter articles={sortedArticles} />
+      </Suspense>
     </div>
   );
 }
