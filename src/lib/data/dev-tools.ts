@@ -1,0 +1,130 @@
+import type { DevTool } from "@/types";
+
+export const devTools: DevTool[] = [
+  {
+    id: "json-formatter",
+    slug: "json-formatter",
+    name: "JSON Formatter",
+    description: "Format and beautify JSON with proper indentation.",
+    category: "Formatters",
+    icon: "🧩",
+  },
+  {
+    id: "json-validator",
+    slug: "json-validator",
+    name: "JSON Validator",
+    description: "Validate JSON syntax and detect parsing issues quickly.",
+    category: "Formatters",
+    icon: "✅",
+  },
+  {
+    id: "css-minifier",
+    slug: "css-minifier",
+    name: "CSS Minifier",
+    description: "Minify CSS by removing whitespace and comments.",
+    category: "Formatters",
+    icon: "🎨",
+  },
+  {
+    id: "js-minifier",
+    slug: "js-minifier",
+    name: "JS Minifier",
+    description: "Compress JavaScript to reduce file size for production.",
+    category: "Formatters",
+    icon: "⚡",
+  },
+  {
+    id: "html-formatter",
+    slug: "html-formatter",
+    name: "HTML Formatter",
+    description: "Format HTML markup for readability and consistency.",
+    category: "Formatters",
+    icon: "🧱",
+  },
+  {
+    id: "color-picker",
+    slug: "color-picker",
+    name: "Color Picker",
+    description: "Pick, inspect, and copy color values in multiple formats.",
+    category: "Converters",
+    icon: "🎯",
+  },
+  {
+    id: "gradient-generator",
+    slug: "gradient-generator",
+    name: "Gradient Generator",
+    description: "Create CSS gradients with adjustable colors and angles.",
+    category: "Generators",
+    icon: "🌈",
+  },
+  {
+    id: "password-generator",
+    slug: "password-generator",
+    name: "Password Generator",
+    description: "Generate strong passwords with custom complexity rules.",
+    category: "Generators",
+    icon: "🔐",
+  },
+  {
+    id: "uuid-generator",
+    slug: "uuid-generator",
+    name: "UUID Generator",
+    description: "Generate random UUIDs for identifiers and testing.",
+    category: "Generators",
+    icon: "🆔",
+  },
+  {
+    id: "base64-encoder",
+    slug: "base64-encoder",
+    name: "Base64 Encoder",
+    description: "Encode plain text into Base64 representation.",
+    category: "Converters",
+    icon: "🔡",
+  },
+  {
+    id: "base64-decoder",
+    slug: "base64-decoder",
+    name: "Base64 Decoder",
+    description: "Decode Base64 strings back to plain text.",
+    category: "Converters",
+    icon: "🔠",
+  },
+  {
+    id: "regex-tester",
+    slug: "regex-tester",
+    name: "Regex Tester",
+    description: "Test regular expressions against sample text in real time.",
+    category: "Formatters",
+    icon: "🧪",
+  },
+  {
+    id: "timestamp-converter",
+    slug: "timestamp-converter",
+    name: "Timestamp Converter",
+    description: "Convert timestamps to readable dates and back.",
+    category: "Converters",
+    icon: "🕒",
+  },
+  {
+    id: "markdown-previewer",
+    slug: "markdown-previewer",
+    name: "Markdown Previewer",
+    description: "Preview rendered Markdown while editing source text.",
+    category: "Preview",
+    icon: "📝",
+  },
+  {
+    id: "meta-tag-generator",
+    slug: "meta-tag-generator",
+    name: "Meta Tag Generator",
+    description: "Generate SEO and social media meta tags for pages.",
+    category: "Generators",
+    icon: "🏷️",
+  },
+];
+
+export const getDevToolBySlug = (slug: string): DevTool | undefined =>
+  devTools.find((tool) => tool.slug === slug);
+
+export const getAllDevToolSlugs = (): string[] =>
+  devTools.map((tool) => tool.slug);
