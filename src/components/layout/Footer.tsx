@@ -54,10 +54,10 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 border-t border-border">
+    <footer className="relative mt-24 overflow-x-hidden border-t border-border">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="min-w-0 lg:col-span-4">
             <Logo />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
               {SITE.description}
@@ -65,7 +65,7 @@ export function Footer() {
             <div className="mt-6 space-y-2 text-sm text-muted">
               <p>
                 <span className="font-medium text-text">Email: </span>
-                <a href={`mailto:${SITE.email}`} className="hover:text-cyan-400 transition-colors">
+                <a href={`mailto:${SITE.email}`} className="break-all hover:text-cyan-400 transition-colors">
                   {SITE.email}
                 </a>
               </p>

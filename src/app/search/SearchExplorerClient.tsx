@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Fuse from "fuse.js";
 import { Search } from "lucide-react";
 
@@ -14,7 +15,14 @@ interface SearchExplorerClientProps {
 }
 
 export function SearchExplorerClient({ entries }: SearchExplorerClientProps) {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") ?? searchParams.get("search_term_string") ?? "";
+  const [query, setQuery] = useState(initialQuery);
+
+  useEffect(() => {
+    const param = searchParams.get("q") ?? searchParams.get("search_term_string") ?? "";
+    setQuery(param);
+  }, [searchParams]);
 
   const fuse = useMemo(
     () =>
@@ -36,12 +44,14 @@ export function SearchExplorerClient({ entries }: SearchExplorerClientProps) {
   return (
     <>
       <div className="glass glow-border mb-6 rounded-2xl p-4 sm:p-5">
-        <label className="relative block">
+        <label htmlFor="site-search" className="relative block">
           <Search
             size={16}
             className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted"
           />
           <input
+            id="site-search"
+            name="q"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search guides, roadmaps, and tools with fuzzy matching..."

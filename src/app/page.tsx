@@ -136,7 +136,7 @@ export default function HomePage() {
             {categories.map((cat) => (
               <Link
                 key={cat.id}
-                href={`/blog?category=${encodeURIComponent(cat.name)}`}
+                href={`/categories/${cat.seoSlug}`}
                 className="glass glow-border glass-hover group rounded-2xl p-6 transition-all hover:-translate-y-1"
               >
                 <span className="text-3xl">{cat.icon}</span>

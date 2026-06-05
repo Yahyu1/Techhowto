@@ -1,6 +1,7 @@
 export interface Category {
   id: string;
   slug: string;
+  seoSlug: string;
   name: string;
   description: string;
   icon: string;
@@ -12,6 +13,7 @@ export const categories: Category[] = [
   {
     id: "ai-tools",
     slug: "ai-tools",
+    seoSlug: "ai",
     name: "AI Tools",
     description: "Reviews, comparisons, and workflows for modern AI assistants.",
     icon: "🧠",
@@ -21,6 +23,7 @@ export const categories: Category[] = [
   {
     id: "comparisons",
     slug: "comparisons",
+    seoSlug: "ai",
     name: "Comparisons",
     description: "Head-to-head breakdowns to help you pick the right stack.",
     icon: "⚖️",
@@ -30,6 +33,7 @@ export const categories: Category[] = [
   {
     id: "windows",
     slug: "windows",
+    seoSlug: "coding-tips",
     name: "Windows",
     description: "Troubleshooting guides for updates, boot, and system repair.",
     icon: "🪟",
@@ -39,6 +43,7 @@ export const categories: Category[] = [
   {
     id: "android",
     slug: "android",
+    seoSlug: "mobile-development",
     name: "Android",
     description: "Battery, privacy, and performance optimization tips.",
     icon: "📱",
@@ -48,6 +53,7 @@ export const categories: Category[] = [
   {
     id: "news",
     slug: "news",
+    seoSlug: "tech-news",
     name: "News",
     description: "Industry updates, model releases, and pricing changes.",
     icon: "📰",
@@ -57,6 +63,7 @@ export const categories: Category[] = [
   {
     id: "development",
     slug: "development",
+    seoSlug: "web-development",
     name: "Development",
     description: "Frontend, backend, and full-stack engineering guides.",
     icon: "💻",

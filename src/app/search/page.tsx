@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { createMetadata } from "@/lib/seo/metadata";
 import { buildSearchIndex } from "@/lib/data/search-index";
 import { SearchExplorerClient } from "./SearchExplorerClient";
@@ -24,7 +25,9 @@ export default function SearchPage() {
           align="left"
         />
         <div className="mt-8">
-          <SearchExplorerClient entries={searchEntries} />
+          <Suspense fallback={<div className="py-8 text-center text-muted">Loading search...</div>}>
+            <SearchExplorerClient entries={searchEntries} />
+          </Suspense>
         </div>
       </div>
     </section>

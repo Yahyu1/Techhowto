@@ -291,6 +291,7 @@ export function ArticlePageClient({
         recommended={recommended}
         categoryArticles={categoryArticles}
         categoryName={article.category}
+        categorySlug={article.categorySlug}
       />
     </>
   );

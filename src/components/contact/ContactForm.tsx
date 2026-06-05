@@ -78,7 +78,7 @@ export function ContactForm() {
           className="w-full rounded-xl border border-border bg-elevated px-4 py-3 text-sm text-text outline-none focus:border-cyan-400/50"
         />
       </div>
-      <GlassButton type="submit" disabled={status === "loading"}>
+      <GlassButton type="submit" variant="primary" disabled={status === "loading"}>
         {status === "loading" ? "Sending..." : "Send message"}
       </GlassButton>
       {message && (

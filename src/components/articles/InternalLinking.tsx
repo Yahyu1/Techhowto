@@ -9,6 +9,7 @@ interface InternalLinkingProps {
   recommended: Article[];
   categoryArticles: Article[];
   categoryName?: string;
+  categorySlug?: string;
 }
 
 function ArticleGrid({ title, articles, viewAllHref }: { title: string; articles: Article[]; viewAllHref?: string }) {
@@ -39,20 +40,30 @@ export function InternalLinking({
   recommended,
   categoryArticles,
   categoryName,
+  categorySlug,
 }: InternalLinkingProps) {
+  const shown = new Set<string>();
+
+  const unique = (items: Article[]) =>
+    items.filter((item) => {
+      if (shown.has(item.slug)) return false;
+      shown.add(item.slug);
+      return true;
+    });
+
   return (
     <>
-      <ArticleGrid title="Related Articles" articles={related} />
-      <ArticleGrid title="Recommended Articles" articles={recommended} />
-      {categoryName && (
+      <ArticleGrid title="Related Articles" articles={unique(related)} />
+      <ArticleGrid title="Recommended Articles" articles={unique(recommended)} />
+      {categoryName && categoryArticles.length > 0 && categorySlug && (
         <ArticleGrid
           title={`More in ${categoryName}`}
-          articles={categoryArticles}
-          viewAllHref={`/categories/${categoryArticles[0]?.categorySlug ?? ""}`}
+          articles={unique(categoryArticles)}
+          viewAllHref={`/categories/${categorySlug}`}
         />
       )}
-      <ArticleGrid title="Latest Articles" articles={latest} viewAllHref="/blog" />
-      <ArticleGrid title="Popular Articles" articles={popular} viewAllHref="/blog" />
+      <ArticleGrid title="Latest Articles" articles={unique(latest)} viewAllHref="/blog" />
+      <ArticleGrid title="Popular Articles" articles={unique(popular)} viewAllHref="/blog" />
     </>
   );
 }
